@@ -21,6 +21,20 @@ it('should run unit test and pass', function (cb) {
 	stream.end();
 });
 
+it('should run unit test with yield and pass', function (cb) {
+	var stream = mocha();
+	process.stdout.write = function (str) {
+		if (/1 passing/.test(str)) {
+			assert(true);
+			process.stdout.write = out;
+			cb();
+		}
+	};
+
+	stream.write(new gutil.File({path: 'fixture-pass-generator.js'}));
+	stream.end();
+});
+
 it('should run unit test and fail', function (cb) {
 	var stream = mocha();
 

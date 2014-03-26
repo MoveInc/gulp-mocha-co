@@ -1,19 +1,19 @@
 {
-  "name": "gulp-mocha",
-  "version": "0.4.1",
-  "description": "Run Mocha tests",
+  "name": "gulp-mocha-co",
+  "version": "0.4.1-co.1",
+  "description": "Run Mocha tests with co generators",
   "license": "MIT",
-  "repository": "sindresorhus/gulp-mocha",
+  "repository": "rafinskipg/gulp-mocha-co",
   "author": {
-    "name": "Sindre Sorhus",
-    "email": "sindresorhus@gmail.com",
-    "url": "http://sindresorhus.com"
+    "name": "Rafael Pedrola Gimeno",
+    "email": "rafinskipg@gmail.com",
+    "url": "http://rvpg.me"
   },
   "engines": {
-    "node": ">=0.10.0"
+    "node": ">=0.11.0"
   },
   "scripts": {
-    "test": "mocha"
+    "test": "./node_modules/mocha-co/bin/mocha --harmony"
   },
   "files": [
     "index.js"
@@ -35,6 +35,6 @@
   "dependencies": {
     "gulp-util": "~2.2.0",
     "through2": "~0.4.0",
-    "mocha": "~1"
+    "mocha-co": "^1.17.1-co.1"
   }
 }

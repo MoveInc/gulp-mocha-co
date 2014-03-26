@@ -2,7 +2,7 @@
 var path = require('path');
 var gutil = require('gulp-util');
 var through2 = require('through2');
-var Mocha = require('mocha');
+var Mocha = require('mocha-co');
 
 module.exports = function (options) {
 	var mocha = new Mocha(options);
@@ -20,7 +20,7 @@ module.exports = function (options) {
 		try {
 			mocha.run(function (errCount) {
 				if (errCount > 0) {
-					this.emit('error', new gutil.PluginError('gulp-mocha', errCount + ' ' + (errCount === 1 ? 'test' : 'tests') + ' failed.'));
+					this.emit('error', new gutil.PluginError('gulp-mocha-co', errCount + ' ' + (errCount === 1 ? 'test' : 'tests') + ' failed.'));
 				}
 
 				for (var key in require.cache) {
@@ -32,7 +32,7 @@ module.exports = function (options) {
 				cb();
 			}.bind(this));
 		} catch (err) {
-			this.emit('error', new gutil.PluginError('gulp-mocha', err));
+			this.emit('error', new gutil.PluginError('gulp-mocha-co', err));
 			cb();
 		}
 	});
