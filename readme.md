@@ -1,30 +1,67 @@
-# [gulp](https://github.com/wearefractal/gulp)-mocha [![Build Status](https://secure.travis-ci.org/sindresorhus/gulp-mocha.png?branch=master)](http://travis-ci.org/sindresorhus/gulp-mocha)
+## Information
 
-> Run [Mocha](http://visionmedia.github.io/mocha/) tests
+This gulp plugin is based on Sindre Sorhus gulp-mocha plugin, but pointing to [mocha-co](https://www.npmjs.org/package/mocha-co)
 
-*Keep in mind that this is just a thin wrapper around Mocha and your issue is most likely with Mocha.*
+## Use
+In order to have your tests running with mocha-co you need to launch gulp with the ES6 flag '--harmony'
+
+You can do it with
+````
+node --harmony `which gulp`
+````
+or creating an alias
+````
+alias gulp='node --harmony `which gulp`'
+````
+
+Then you can run your tasks as normal
+
+````
+gulp test
+````
 
 
 ## Install
 
-Install with [npm](https://npmjs.org/package/gulp-mocha)
+Install with [npm](https://npmjs.org/package/gulp-mocha-co)
 
 ```
-npm install --save-dev gulp-mocha
+npm install --save-dev gulp-mocha-co
 ```
-
 
 ## Example
 
 ```js
 var gulp = require('gulp');
-var mocha = require('gulp-mocha');
+var mocha = require('gulp-mocha-co');
 
 gulp.task('default', function () {
-	gulp.src('test.js')
-		.pipe(mocha({reporter: 'nyan'}));
+  gulp.src('test.js')
+    .pipe(mocha({reporter: 'nyan'}));
 });
 ```
+
+## Code with generators
+
+```js
+
+describe('My test with generators', function(){
+  before(function *(){
+    yield whatever.doSomething()
+  });
+
+  beforeEach(function(){
+    var returnedThing = yield whatever.returnWhatever()
+  });
+
+  it('Should have the things', function*(){
+    var thingsExist = yield parser.checkIfThingsExist();
+    expect(thingsExist).to.equals(true);
+  });
+});
+
+```
+
 
 ## API
 
@@ -90,5 +127,5 @@ Only run tests matching the given pattern which is internally compiled to a RegE
 
 
 ## License
-
+Based on Sindre Sorhus work
 MIT © [Sindre Sorhus](http://sindresorhus.com)

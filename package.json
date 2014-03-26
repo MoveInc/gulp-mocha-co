@@ -1,6 +1,6 @@
 {
   "name": "gulp-mocha-co",
-  "version": "0.4.1-co.1",
+  "version": "0.4.1-co.2",
   "description": "Run Mocha tests with co generators",
   "license": "MIT",
   "repository": "rafinskipg/gulp-mocha-co",
